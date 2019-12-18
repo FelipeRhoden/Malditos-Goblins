@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Malditos Goblins</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+                <!-- Início Ficha -->
+                <div id="Ficha" class="card my-2">
+                    <div class="card-header text-center">
+                        <strong>Goblin</strong>
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Início Nome-->
+                        <h6 class="card-title p-1 border-bottom border-dark">
+                            <strong>Nome:</strong> 
+                            <span id="nome" contenteditable="true" spellcheck="false">
+                                Seu Nome
+                            </span>
+                        </h6>
+                        <!-- Fim Nome-->
+
+                        <!-- Início Aparência-->
+                        <h6 class="card-title p-1 border-bottom border-dark">
+                            <strong>Aparência:</strong> 
+                            <span id="aparencia">Sua Aparência</span>
+                        </h6>
+                        <!-- Fim Aparência-->
+
+                        <!-- Início Ocupação/Nivel-->
+                        <h6 class="card-title p-1 border-bottom  border-dark">
+                            <span class="mr-1">
+                                <strong>Ocupação:</strong> 
+                                <span id="ocupacao">Sua Ocupação</span>
+                            </span>
+                            | 
+                            <span class="">
+                                <strong>Nivel:</strong> 
+                                <span id="nivel">0</span> 
+                            </span>
+                        </h6>
+                        <!-- Fim Ocupação-->
+
+                        <!-- Início Vitalidade/Dano/Proteção-->
+                        <h6 class="card-title p-1 border-bottom  border-dark">
+
+                            <!-- Vitalidade-->
+                            <span class="mr-1">
+                                <strong>Vitalidade:</strong> 
+                                <span id="vitalidade">0</span>
+                            </span>
+
+                            | 
+
+                            <!-- Dano-->
+                            <span class="mr-1">
+                                <strong>Dano</strong> 
+                                <span id="dano">0</span> 
+                            </span>
+
+                            | 
+
+                            <!-- Proteção-->
+                            <span class="mr-1">
+                                <strong>Proteção</strong> 
+                                <span id="protecao">0</span> 
+                            </span>
+
+                        </h6>
+                        <!-- Fim Vitalidade/Dano/Proteção-->
+
+                    </div>
+
+                    <!-- Início Atributos-->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center"><Strong>Atributos</Strong></li>
+                        <li class="list-group-item"><strong>Combate:</strong> <span id="combate">0</span></li>
+                        <li class="list-group-item"><strong>Conhecimento:</strong> <span id="conhecimento">0</span></li>
+                        <li class="list-group-item"><strong>Habilidade:</strong> <span id="habilidade">0</span></li>
+                        <li class="list-group-item"><strong>Sorte:</strong> <span id="sorte">0</span></li>
+                    </ul>
+                    <!-- Fim Atributos-->
+
+                    <!-- Início Equipamentos-->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center"><Strong>Equipamentos</Strong></li>
+                        <li class="list-group-item"><span id="item1" contenteditable="true" spellcheck="false">Vazio</span></li>
+                        <li class="list-group-item"><span id="item2" contenteditable="true" spellcheck="false">Vazio</span></li>
+                        <li class="list-group-item"><span id="item3" contenteditable="true" spellcheck="false">Vazio</span></li>
+                    </ul>
+                    <!-- Fim Equippamentos-->
+
+                </div>
+
+            </div>
+            <!-- Fim Ficha -->
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

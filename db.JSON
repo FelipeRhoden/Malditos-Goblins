@@ -1,0 +1,28 @@
+{
+    "Coloracao": [
+        "Verde Claro",
+        "Verde",
+        "Verde Escuro",
+        "Amarelo",
+        "Vermelho",
+        "Azul"
+    ],
+
+    "Caracteristica": [
+        "Insando",
+        "Fedorento",
+        "Cicatrizes",
+        "Gordo",
+        "Fala Errado",
+        "Anomalia"
+    ],
+
+    "Ocupacao": [
+        "Mercenário",
+        "Caçador",
+        "Gatuno",
+        "Líder",
+        "Piromaníaco",
+        "Xamã"
+    ]
+}
