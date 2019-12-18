@@ -10,7 +10,7 @@ function random(num){
     }
 }
 
-$.get("db.JSON",function(data,status){
+$.get("JSON.txt",function(data,status){
     if (status == "success"){
 
         const ficha = JSON.parse(data);
