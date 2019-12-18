@@ -1,8 +1,8 @@
 
 function random(num){
     try {
-       let newNum =  Math.floor(Math.random() * num);
-       return newNum;
+       const newNum =  Math.random() * num;
+       return Math.floor(newNum);
 
     } catch(err){
 
