@@ -24,5 +24,261 @@
         "Líder",
         "Piromaníaco",
         "Xamã"
+    ],
+
+    "Mercenário" : {
+        "combate" : 1,
+        "conhecimento" : 0,
+        "habilidade" : 1,
+        "sorte" : 0,
+        "equip" : "equipPesado"
+    },
+
+    "Caçador" : {
+        "combate" : 1,
+        "conhecimento" : 0,
+        "habilidade" : 0,
+        "sorte" : 1,
+        "equip" : "equipLeve"
+    },
+
+    "Gatuno": {
+        "combate" : 0,
+        "conhecimento" : 1,
+        "habilidade" : 1,
+        "sorte" : 0,
+        "equip" : "equipLeve"
+    },
+
+    "Líder": {
+        "combate" : 1,
+        "conhecimento" : 1,
+        "habilidade" : 0,
+        "sorte" : 0,
+        "equip" : "equipPesado"
+    },
+
+    "Piromaníaco": {
+        "combate" : 0,
+        "conhecimento" : 0,
+        "habilidade" : 1,
+        "sorte" : 1,
+        "equip" : "equipExplosivo"
+    },
+
+    "Xamã": {
+        "combate" : 0,
+        "conhecimento" : 1,
+        "habilidade" : 0,
+        "sorte" : 1,
+        "equip" : [{
+            "nome" : "Cajado (Dano 1)",
+            "dano" : 1,
+            "protecao" : 0
+        }]
+    },
+
+    "Verde Claro" : {
+        "combate" : 2,
+        "conhecimento" : 2,
+        "habilidade" : 1,
+        "sorte" : 1
+    },
+
+        "Verde" : {
+        "combate" : 2,
+        "conhecimento" : 1,
+        "habilidade" : 1,
+        "sorte" : 2
+    },
+
+        "Verde Escuro": {
+        "combate" : 2,
+        "conhecimento" : 1,
+        "habilidade" : 2,
+        "sorte" : 1
+    },
+
+        "Amarelo": {
+        "combate" : 1,
+        "conhecimento" : 1,
+        "habilidade" : 2,
+        "sorte" : 2
+    },
+
+        "Vermelho": {
+        "combate" : 1,
+        "conhecimento" : 2,
+        "habilidade" : 2,
+        "sorte" : 1
+    },
+
+        "Azul": {
+        "combate" : 1,
+        "conhecimento" : 2,
+        "habilidade" : 1,
+        "sorte" : 2
+    },
+
+    "equipLeve" : [
+        [{ 
+            "nome" : "2 Adagas* (dano 2)",
+            "dano" : 2,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "2 Adagas* (dano 2)",
+            "dano" : 2,
+            "protecao" : 0
+        },
+        {
+            "nome" : "Escudo (proteção 1)",
+            "dano" : 0,
+            "protecao" : 1
+        }],
+
+        [{ 
+            "nome" : "Arco Simples (distância; dano 2)",
+            "dano" : 2,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "Arco Composto (distância; dano 3)",
+            "dano" : 3,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "4 Adagas* (dano 2)",
+            "dano" : 2,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "Besta (distância; dano 3)",
+            "dano" : 3,
+            "protecao" : 0
+        },
+        {
+            "nome" : "Elmo (proteção 1)",
+            "dano" : 0,
+            "protecao" : 1
+        }]
+    ],
+
+    "equipPesado" : [
+        [{ 
+            "nome" : "Espada (dano 3)",
+            "dano" : 3,
+            "protecao" : 0
+        },
+        {
+            "nome" : "Escudo (proteção 1)",
+            "dano" : 0,
+            "protecao" : 1
+        }],
+
+        [{ 
+            "nome" : "Machado (dano 4)",
+            "dano" : 4,
+            "protecao" : 0
+        },
+        {
+            "nome" : "Elmo (proteção 1)",
+            "dano" : 0,
+            "protecao" : 1
+        }],
+
+        [{ 
+            "nome" : "2 Machadinhas* (dano 3)",
+            "dano" : 3,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "Espadona (dano 5)",
+            "dano" : 5,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "2 Espadas (dano 3)",
+            "dano" : 3,
+            "protecao" : 0
+        },
+        {
+            "nome" : "Armadura (proteção 1)",
+            "dano" : 0,
+            "protecao" : 1
+        }],
+
+        [{ 
+            "nome" : "Adaga* (dano 2)",
+            "dano" : 2,
+            "protecao" : 0
+        },
+        {
+            "nome" : "Espada (dano 3)",
+            "dano" : 3,
+            "protecao" : 0
+        },
+        {
+            "nome" : "Armadura (proteção 1)",
+            "dano" : 0,
+            "protecao" : 1
+        }]
+    ],
+
+    "equipExplosivo" : [
+        [{ 
+            "nome" : "Pistola (distância; dano 4)",
+            "dano" : 4,
+            "protecao" : 0
+        },
+        {
+            "nome" : " Elmo (proteção 1)",
+            "dano" : 0,
+            "protecao" : 1
+        }],
+
+        [{ 
+            "nome" : "2 Pistolas (distância; dano 4)",
+            "dano" : 4,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "3 Galinhas Explosivas (distância; dano 4 em todos até 3m)",
+            "dano" : 4,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "Barril de Pólvora (dano 5 em todos até 3m)",
+            "dano" : 5,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "Pistola (distância; dano 4)",
+            "dano" : 4,
+            "protecao" : 0
+        },
+        {
+            "nome" : "2 Galinhas Explosivas (distância; dano 4 em todos até 3m)",
+            "dano" : 4,
+            "protecao" : 0
+        }],
+
+        [{ 
+            "nome" : "Canhão (distância; dano 8; Carregar [2 turnos])",
+            "dano" : 8,
+            "protecao" : 0
+        }]
     ]
+
+
+
 }
