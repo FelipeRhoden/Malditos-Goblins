@@ -1,7 +1,7 @@
 
 function random(num){
     try {
-       const newNum =  Math.floor(Math.random() * num);
+       let newNum =  Math.floor(Math.random() * num);
        return newNum;
 
     } catch(err){
