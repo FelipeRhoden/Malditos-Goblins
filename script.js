@@ -1,8 +1,8 @@
 
 function random(num){
     try {
-       const newNum =  Math.random() * num;
-       return Math.floor(newNum);
+       const newNum =  Math.floor(Math.random() * num);
+       return newNum;
 
     } catch(err){
 
@@ -13,7 +13,7 @@ function random(num){
 $.get("db.JSON",function(data,status){
     if (status == "success"){
 
-        const ficha = JSON.stringify(data);
+        const ficha = JSON.parse(data);
         const cor = ficha.Coloracao[random(6)];
         const caracteristica = ficha.Caracteristica[random(6)];
         const ocupacao = ficha.Ocupacao[random(6)];
