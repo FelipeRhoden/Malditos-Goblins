@@ -7,21 +7,73 @@
     <title>Malditos Goblins</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="https://i0.wp.com/coisinhaverde.com.br/jogos/wp-content/uploads/2019/03/cropped-Coisinha-Verde-Logo2016-1.png?fit=192%2C192&amp;ssl=1" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://i0.wp.com/coisinhaverde.com.br/jogos/wp-content/uploads/2019/03/cropped-Coisinha-Verde-Logo2016-1.png?fit=180%2C180&amp;ssl=1">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="http://coisinhaverde.com.br/jogos/portfolio/malditos-goblins/">
+            <img src="https://i0.wp.com/coisinhaverde.com.br/jogos/wp-content/uploads/2019/03/cropped-Coisinha-Verde-Logo2016-1.png?fit=180%2C180&amp;ssl=1" width="30" height="30" alt="">    
+            Malditos Goblins
+        </a>
+        <button id="navtoggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Habilidades
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Nivel 1</a>
+                <a class="dropdown-item" href="#">Nivel 2</a>
+                <a class="dropdown-item" href="#">Nivel 3</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ações de Combate
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Atacar</a>
+                <a class="dropdown-item" href="#">Esquiva</a>
+                <a class="dropdown-item" href="#">Pular</a>
+                <a class="dropdown-item" href="#">Analisar</a>
+                <a class="dropdown-item" href="#">Ataque Múltiplo</a>
+                <a class="dropdown-item" href="#">Cacunda</a>
+                <a class="dropdown-item" href="#">Defesa Total</a>
+                <a class="dropdown-item" href="#">Morte</a>
+                </div>
+            </li>
+            <li class="nav-item ">
+                <a id="upar" class="nav-link btn text-left">Subir de Nivel</a>
+            </li>
+            <li class="nav-item ">
+                <a id="rolarDado" class="nav-link btn text-left">Rolar D6</a>
+            </li>
+            </ul>
+            <div class="my-2 my-lg-0">
+            <button id="newGoblin" class="btn btn-outline-success my-2 my-sm-0">Novo Goblin</button>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
 
                 <!-- Início Ficha -->
-                <div id="ficha" class="card my-2">
+                <div id="ficha" class="card mb-2" style="margin-top: 4.5rem;">
                     <div class="card-header text-center">
                         <strong>Goblin</strong>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body pb-1 pt-2">
 
                         <!-- Início Nome-->
                         <h6 class="card-title p-1 border-bottom border-dark">
@@ -84,12 +136,18 @@
                     </div>
 
                     <!-- Início Atributos-->
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center"><Strong>Atributos</Strong></li>
-                        <li class="list-group-item"><strong>Combate:</strong> <span id="combate">0</span></li>
-                        <li class="list-group-item"><strong>Conhecimento:</strong> <span id="conhecimento">0</span></li>
-                        <li class="list-group-item"><strong>Habilidade:</strong> <span id="habilidade">0</span></li>
-                        <li class="list-group-item"><strong>Sorte:</strong> <span id="sorte">0</span></li>
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item pt-1 text-center"><Strong>Atributos</Strong></li>
+                        <li class="list-group-item">
+                            <strong>Combate:</strong> <span id="combate">0</span>
+                            |
+                            <strong>Conhecimento:</strong> <span id="conhecimento">0</span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Habilidade:</strong> <span id="habilidade">0</span>
+                            |
+                            <strong>Sorte:</strong> <span id="sorte">0</span>
+                        </li>
                     </ul>
                     <!-- Fim Atributos-->
 
@@ -101,12 +159,6 @@
                         <li class="list-group-item"><span id="item3" contenteditable="true" spellcheck="false">Vazio</span></li>
                     </ul>
                     <!-- Fim Equippamentos-->
-
-                    <!-- Incio Botões -->
-                    <div class="card-body text-center">
-                        <button id="newGoblin" class="btn btn-success">Novo Goblin</button>
-                    </div>
-                    <!-- Fim Botões -->
 
                 </div>
 

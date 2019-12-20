@@ -277,8 +277,25 @@
             "dano" : 8,
             "protecao" : 0
         }]
-    ]
+    ],
 
-
+    "nome" : {
+        "silaba1" : [
+            "Sp",
+            "Cr",
+            "Bu",
+            "Ut",
+            "An",
+            "Om"
+        ],
+        "silaba2" : [
+            "or",
+            "ut",
+            "ar",
+            "an",
+            "ot",
+            "ec"
+        ]
+    }
 
 }

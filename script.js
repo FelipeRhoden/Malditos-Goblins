@@ -123,6 +123,14 @@ function goblin(){
         return protecaoFinal;
     }
 
+    this.perdeVitalidade = () => {
+        this.vitalidade--;
+    }
+
+    this.ganhaVitalidade = () => {
+        if ((this.vitalidade < 4 && this.nivel <= 3) || this.vitalidade < (4 + nivel - 3))
+            this.vitalidade++;
+    }
 
 
 }
@@ -146,47 +154,76 @@ function dado(lados){
     }
 }
 
-let ficha;
+function fechaToggler(){
+
+    if ($("#navbarSupportedContent").hasClass('show'))
+        $("#navtoggler").trigger('click');
+
+}
+
+function atualizaDadosPersonagem(personagem){
+
+    $("#nome").text(personagem.nome);   
+    $("#aparencia").text(personagem.aparencia());
+    $("#ocupacao").text(personagem.ocupacao);
+    $("#nivel").text(personagem.nivel);
+    $("#combate").text(personagem.atributos.combate);
+    $("#conhecimento").text(personagem.atributos.conhecimento);
+    $("#habilidade").text(personagem.atributos.habilidade);
+    $("#sorte").text(personagem.atributos.sorte);
+    $("#vitalidade").text(personagem.vitalidade);
+    $("#dano").text(personagem.dano());
+    $("#protecao").text(personagem.protecao());
+
+    for (let i = 0; i < personagem.equipamentos.length; i++) {
+        $("#item"+(i+1)).text(personagem.equipamentos[i].nome);
+    }
+}
+
+let ficha = {};
 
 function newGoblin(){
-            const personagem = new goblin();
-            personagem.coloracao = ficha.Coloracao[dado(6)];
-            personagem.caracteristica = ficha.Caracteristica[dado(6)];
-            personagem.ocupacao = ficha.Ocupacao[dado(6)];
-            personagem.upNivel();  
-            personagem.atributos.addValor(ficha[personagem.coloracao]); 
-            personagem.atributos.addValor(ficha[personagem.ocupacao]);
-            if (personagem.ocupacao != "Xamã"){ 
-                let i = 0;
-                ficha[ficha[personagem.ocupacao].equip][dado(6)].forEach(element =>{
-                    personagem.equipamentos[i].addEquip(element);
-                    i++;
-                })
-            } else {
-                let i = 0;
-                ficha[personagem.ocupacao].equip.forEach(element => {
-                    personagem.equipamentos[i].addEquip(element);
-                    i++;
-                })
-            }
+    const personagem = new goblin();
+    personagem.nome = ficha.nome.silaba1[dado(6)] + ficha.nome.silaba2[dado(6)];
+    personagem.coloracao = ficha.Coloracao[dado(6)];
+    personagem.caracteristica = ficha.Caracteristica[dado(6)];
+    personagem.ocupacao = ficha.Ocupacao[dado(6)];
+    personagem.upNivel();  
+    personagem.atributos.addValor(ficha[personagem.coloracao]); 
+    personagem.atributos.addValor(ficha[personagem.ocupacao]);
+    if (personagem.ocupacao != "Xamã"){ 
+        let i = 0;
+        ficha[ficha[personagem.ocupacao].equip][dado(6)].forEach(element =>{
+            personagem.equipamentos[i].addEquip(element);
+            i++;
+        })
+    } else {
+        let i = 0;
+        ficha[personagem.ocupacao].equip.forEach(element => {
+            personagem.equipamentos[i].addEquip(element);
+            i++;
+        })
+    }
 
-            $("#aparencia").text(personagem.aparencia());
-            $("#ocupacao").text(personagem.ocupacao);
-            $("#nivel").text(personagem.nivel);
-            $("#combate").text(personagem.atributos.combate);
-            $("#conhecimento").text(personagem.atributos.conhecimento);
-            $("#habilidade").text(personagem.atributos.habilidade);
-            $("#sorte").text(personagem.atributos.sorte);
-            $("#vitalidade").text(personagem.vitalidade);
-            $("#dano").text(personagem.dano());
-            $("#protecao").text(personagem.protecao());
+    $("#upar").click(() => {
+        personagem.upNivel();
+        fechaToggler();
+        atualizaDadosPersonagem(personagem);
+    });
 
-            for (let i = 0; i < personagem.equipamentos.length; i++) {
-                $("#item"+(i+1)).text(personagem.equipamentos[i].nome);
-            }
+    $("#levaDano").click(() => {
+        personagem.perdeVitalidade();
+        atualizaDadosPersonagem(personagem);
+    });
+
+    fechaToggler();
+    atualizaDadosPersonagem(personagem);
 }
 
 $("#newGoblin").click(newGoblin);
+$("#rolarDado").click(()=>{
+    alert(dado(6)+1);
+})
 
 $.get("JSON.txt",function(data,status){
     if (status == "success"){
