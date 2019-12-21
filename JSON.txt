@@ -17,6 +17,18 @@
         "Anomalia"
     ],
 
+    "Anomalia": [
+        "Manchas rosas",
+        "Orelhas no sovaco",
+        "Corcunda",
+        "Braço extra atrofiado",
+        "(1 D6) Olhos",
+        "Olhos Gigantes",
+        "Mãos Gigantes",
+        "Duas Cabeças",
+        "Role mais 2 vezes"
+    ],
+
     "Ocupacao": [
         "Mercenário",
         "Caçador",
@@ -27,46 +39,122 @@
     ],
 
     "Mercenário" : {
+        "mana" : 0,
         "combate" : 1,
         "conhecimento" : 0,
         "habilidade" : 1,
         "sorte" : 0,
-        "equip" : "equipPesado"
+        "equip" : "equipPesado",
+        "tecnica" : [
+            {
+                "nome" : "Mestre de Armas",
+                "descricao" : "Você sempre rola +1 dado em todos os ataques que você fizer lutando com sua arma favorita (Escolha uma)."
+            },
+            {
+                "nome" : "Ataque Brutal",
+                "descricao" : "Uma vez ao dia você pode fazer um ataque brutal, que causa o dobro de dano na vítima."
+            },
+            {
+                "nome" : "Ataque Fatal",
+                "descricao" : "Uma vez ao dia você pode fazer um ataque fatal. Se acertar, a vitima deverá vencer um teste de Sorte (Dificuldade 5) ou morrerá imediatamente."
+            }
+        ]
     },
 
     "Caçador" : {
+        "mana" : 0,
         "combate" : 1,
         "conhecimento" : 0,
         "habilidade" : 0,
         "sorte" : 1,
-        "equip" : "equipLeve"
+        "equip" : "equipLeve",
+        "tecnica" : [
+            {
+                "nome" : "Rastrear",
+                "descricao" : "Com um teste bem sucedido de Conhecimento (dificuldade 3) você pode rastrear qualquer criatura."
+            },
+            {
+                "nome" : "Mira Certeira",
+                "descricao" : "Você ignora a proteção dos seus oponentes"
+            },
+            {
+                "nome" : "Tiro Fatal",
+                "descricao" : "Uma vez ao dia você pode fazer um ataque à distância fatal. Se acertar, a vitima deverá vencer um teste de Sorte (Dificuldade 5) ou morrerá imediatamente."
+            }
+        ]
     },
 
     "Gatuno": {
+        "mana" : 0,
         "combate" : 0,
         "conhecimento" : 1,
         "habilidade" : 1,
         "sorte" : 0,
-        "equip" : "equipLeve"
+        "equip" : "equipLeve",
+        "tecnica" : [
+            {
+                "nome" : "Roubar",
+                "descricao" : "Você pode roubar sem ser visto se vencer um teste resistido de Habilidade contra a vítima."
+            },
+            {
+                "nome" : "Armar Armadilhas",
+                "descricao" : "Você pode fazer uma armadilha em qualquer lugar se tiver alguns materiais. A pessoa terá que passar em um teste de Sorte (dificuldade 5) para não cair na sua armadilha."
+            },
+            {
+                "nome" : "Ataque Furtivo",
+                "descricao" : "Se você não foi visto, você pode fazer um ataque furtivo. Se acertar, a vitima deverá fazer um teste de Sorte (Dificuldade 5). Se ela falhar ela morrerá"
+            }
+        ]
     },
 
     "Líder": {
+        "mana" : 0,
         "combate" : 1,
         "conhecimento" : 1,
         "habilidade" : 0,
         "sorte" : 0,
-        "equip" : "equipPesado"
+        "equip" : "equipPesado",
+        "tecnica" : [
+            {
+                "nome" : "Grito de Guerra",
+                "descricao" : "Uma vez ao dia você pode dar um grito que permitirá que todos seus aliados rolem 1 dado a mais para se esquivar até o final da batalha"
+            },
+            {
+                "nome" : "Ataque Brutal",
+                "descricao" : "Uma vez ao dia você pode fazer um ataque brutal, que causa o dobro de dano na vítima."
+            },
+            {
+                "nome" : "Ataque Fatal",
+                "descricao" : "Uma vez ao dia você pode fazer um ataque fatal. Se acertar, a vitima deverá fazer um teste de Sorte (Dificuldade 5). Se ela falhar ela morrerá."
+            }
+        ]
     },
 
     "Piromaníaco": {
+        "mana" : 0,
         "combate" : 0,
         "conhecimento" : 0,
         "habilidade" : 1,
         "sorte" : 1,
-        "equip" : "equipExplosivo"
+        "equip" : "equipExplosivo",
+        "tecnica" : [
+            {
+                "nome" : "Resistência",
+                "descricao" : "Você pode fazer um teste de Sorte (dificuldade 5) quando receber dano de fogo ou explosão de fogo. Se vencer, você não recebe dano."
+            },
+            {
+                "nome" : "Suicídio Explosivo",
+                "descricao" : "Usando sua arma, você pode se explodir e matar TODOS os que estiverem na área da explosão."
+            },
+            {
+                "nome" : "Imunidade",
+                "descricao" : "Você nunca recebe dano com fogo ou explosão."
+            }
+        ]
     },
 
     "Xamã": {
+        "mana" : 8,
         "combate" : 0,
         "conhecimento" : 1,
         "habilidade" : 0,
@@ -75,7 +163,21 @@
             "nome" : "Cajado (Dano 1)",
             "dano" : 1,
             "protecao" : 0
-        }]
+        }],
+        "tecnica" : [
+            {
+                "nome" : "Raio de Energia",
+                "descricao" : "Você pode gastar pontos de magia para fazer ataques a distância. Cada ponto gasto causará um ponto de dano (pode gastar mais para fazer ataque com mais dano)."
+            },
+            {
+                "nome" : "Cura",
+                "descricao" : "Você pode gastar seus pontos de magia para curar seus aliados. Cada ponto de magia recupera um ponto de vitalidade"
+            },
+            {
+                "nome" : "Petrificar",
+                "descricao" : "Gastando 6 pontos de magia você pode paralisar qualquer criatura"
+            }
+        ]
     },
 
     "Verde Claro" : {
@@ -296,6 +398,35 @@
             "ot",
             "ec"
         ]
-    }
+    },
+
+    "acoesDeCombate" : [
+        
+        { "nome" : "Atacar", "descricao" : "Um ataque é um simples teste de Combate com dificuldade 4. Se o ataque for maior ou igual a 4, a vítima recebe o dano, que será igual ao dano da arma menos a proteção do defensor. Se dois dados rolados caírem no 6, terá feito um acerto crítico e causará o dobro de dano. Mas se a vítima for goblin, receberá dano normal e deverá fazer um teste de Sorte comparando o resultado com a Tabela  de Teste Crítico"},
+
+        { "nome" : "Esquiva", "descricao" : "Se você for alvo de um ataque e não estiver distraído ou imobilizado, poderá declarar uma esquiva. Faça um teste de Combate contra o total do ataque do oponente, se vencer você não recebeu dano. Você só pode esquivar de um oponente por turno."},
+        
+        { "nome" : "Pular", "descricao" : "Como goblins são pequenos, contra alvos maiores eles podem pular e atacar pendurado. Para isso, o goblin deve fazer um teste resistido de Habilidade contra o oponente. Se conseguir, ele estará em cima da vitima e nos próximos turnos rolará um dado extra em todos os ataques contra este alvo. Em seu turno, a vítima poderá tirar o goblin das suas costas vencendo um teste de Habilidade com dificuldade 6"},
+
+        { "nome" : "Analisar", "descricao" : "Fique um turno observando o oponente e faça um teste simples de Conhecimento com dificuldade 6. Se vencer, você poderá rolar um dado extra em todos testes e ataques contra o alvo"},
+
+        { "nome" : "Ataque Múltiplo", "descricao" : "Um jogador pode, se quiser, fazer vários ataques numa rodada. Para isto ele deve dividir os dados para cada ataque"},
+
+        { "nome" : "Cacunda", "descricao" : "Dois goblins podem montar um em cima do outro e lutar como um só. Os dois podem atacar, mas não poderão se esquivar. Todo dano sofrido será dividido igualmente pelos dois. "},
+        
+        { "nome" : "DefesaTotal", "descricao" : "Antes de o oponente rolar o ataque, você pode declarar defesa total. Ganhando +1 ponto de proteção (ou +2 se tiver escudo), mas perdendo o próximo turno."},
+
+        { "nome" : "Morte", "descricao" : "Em Malditos Goblins, todos os personagens morrem muito rápido. Mas não se aflija! Sempre que um goblin morre um irmão, filho, tio, sobrinho ou cunhado vem para se vingar em questão de minutos. Faça um novo personagem e continue jogando (mas você começará no nível 1)."}
+
+    ],
+
+    "falas" : [
+        "Graaaaa! Goblin Mata.",
+        "Goblin não fala, goblin mata.",
+        "Goblins Detona!",
+        "Um Goblin, bom. Dois Goblin, Cacunda!",
+        "AAAAA HA HA! BOOM! GOBLIN BOOM!",
+        "Goblins saqueia e mata os bobão."
+    ]
 
 }

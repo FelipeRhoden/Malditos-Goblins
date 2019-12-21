@@ -28,12 +28,12 @@
             <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Habilidades
+                    Técnicas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Nivel 1</a>
-                <a class="dropdown-item" href="#">Nivel 2</a>
-                <a class="dropdown-item" href="#">Nivel 3</a>
+                <a class="dropdown-item btn" id="tecnica1" data-toggle="modal" data-target="#modalInformation">Nivel 1</a>
+                <a class="dropdown-item btn" id="tecnica2" data-toggle="modal" data-target="#modalInformation">Nivel 2</a>
+                <a class="dropdown-item btn" id="tecnica3" data-toggle="modal" data-target="#modalInformation">Nivel 3</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -41,21 +41,39 @@
                     Ações de Combate
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Atacar</a>
-                <a class="dropdown-item" href="#">Esquiva</a>
-                <a class="dropdown-item" href="#">Pular</a>
-                <a class="dropdown-item" href="#">Analisar</a>
-                <a class="dropdown-item" href="#">Ataque Múltiplo</a>
-                <a class="dropdown-item" href="#">Cacunda</a>
-                <a class="dropdown-item" href="#">Defesa Total</a>
-                <a class="dropdown-item" href="#">Morte</a>
+                <a id="acoesCombate1" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Atacar</a>
+                <a id="acoesCombate2" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Esquiva</a>
+                <a id="acoesCombate3" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Pular</a>
+                <a id="acoesCombate4" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Analisar</a>
+                <a id="acoesCombate5" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Ataque Múltiplo</a>
+                <a id="acoesCombate6" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Cacunda</a>
+                <a id="acoesCombate7" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Defesa Total</a>
+                <a id="acoesCombate8" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Morte</a>
                 </div>
             </li>
-            <li class="nav-item ">
-                <a id="upar" class="nav-link btn text-left">Subir de Nivel</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Personagem
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item btn" id="cura">Curar</a>
+                    <a class="dropdown-item btn" id="levarDano">Receber Dano</a>
+                    <a class="dropdown-item btn" id="gastaMana">Gastar Mana</a>
+                    <a class="dropdown-item btn" id="ganhaMana">Recuperar Mana</a>
+                    <a class="dropdown-item btn" id="upar">Subir de Nivel</a>
+                </div>
             </li>
-            <li class="nav-item ">
-                <a id="rolarDado" class="nav-link btn text-left">Rolar D6</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Rolagens
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item btn" id="rolarCombate" data-toggle="modal" data-target="#modalInformation">Rolar Combate</a>
+                    <a class="dropdown-item btn" id="rolarConhecimento" data-toggle="modal" data-target="#modalInformation">Rolar Conhecimento</a>
+                    <a class="dropdown-item btn" id="rolarHabilidade" data-toggle="modal" data-target="#modalInformation">Rolar Habilidade</a>
+                    <a class="dropdown-item btn" id="rolarSorte" data-toggle="modal" data-target="#modalInformation">Rolar Sorte</a>
+                    <a class="dropdown-item btn" id="rolarD6" data-toggle="modal" data-target="#modalInformation">Rolar D6</a>
+                </div>
             </li>
             </ul>
             <div class="my-2 my-lg-0">
@@ -63,6 +81,26 @@
             </div>
         </div>
     </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalInformation" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Titulo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div id="modalBody" class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -105,21 +143,31 @@
                         </h6>
                         <!-- Fim Ocupação-->
 
-                        <!-- Início Vitalidade/Dano/Proteção-->
+                        <!-- Início Vitalidade/Dano/Proteção/Mana-->
+                        <h6 class="card-title p-1 border-bottom  border-dark">
+
+                            <!-- Dano -->
+                            <span class="mr-1">
+                                <strong>Dano</strong> 
+                                <span id="dano">0</span> 
+                            </span>
+
+                            | 
+
+                            <!-- Mana -->
+                            <span class="mr-1">
+                                <strong>Mana:</strong> 
+                                <span id="mana">0</span>
+                            </span>
+
+                        </h6>
+
                         <h6 class="card-title p-1 border-bottom  border-dark">
 
                             <!-- Vitalidade-->
                             <span class="mr-1">
                                 <strong>Vitalidade:</strong> 
                                 <span id="vitalidade">0</span>
-                            </span>
-
-                            | 
-
-                            <!-- Dano-->
-                            <span class="mr-1">
-                                <strong>Dano</strong> 
-                                <span id="dano">0</span> 
                             </span>
 
                             | 
@@ -131,7 +179,7 @@
                             </span>
 
                         </h6>
-                        <!-- Fim Vitalidade/Dano/Proteção-->
+                        <!-- Fim Vitalidade/Dano/Proteção/Mana -->
 
                     </div>
 
@@ -168,6 +216,24 @@
         </div>
     </div>
 
+    <div aria-live="polite" aria-atomic="true" style="position: fixed; bottom: 0; right: 0; min-height: 100px;">
+        
+        <div id="toast" class="toast mr-2"  data-delay="5000" style="position: absolute; top: 0; right: 0; min-width: 20rem;">
+          <div class="toast-header">
+            <img src="https://i0.wp.com/coisinhaverde.com.br/jogos/wp-content/uploads/2019/03/cropped-Coisinha-Verde-Logo2016-1.png?fit=192%2C192&amp;ssl=1" width="20px" class="rounded mr-2" alt="...">
+            <strong id="tituloToast" class="mr-auto">Maldito Goblin</strong>
+            <small>agora mesmo</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="textoToast" class="toast-body">
+            ...
+          </div>
+        </div>
+      </div>
+
+    <script src="mg.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
