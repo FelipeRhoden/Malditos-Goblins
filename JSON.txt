@@ -9,7 +9,7 @@
     ],
 
     "Caracteristica": [
-        "Insando",
+        "Insano",
         "Fedorento",
         "Cicatrizes",
         "Gordo",

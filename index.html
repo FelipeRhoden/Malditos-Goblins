@@ -15,17 +15,26 @@
     <link rel="apple-touch-icon-precomposed" href="https://i0.wp.com/coisinhaverde.com.br/jogos/wp-content/uploads/2019/03/cropped-Coisinha-Verde-Logo2016-1.png?fit=180%2C180&amp;ssl=1">
 </head>
 <body>
+
+    <!-- inicio NavBar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="http://coisinhaverde.com.br/jogos/portfolio/malditos-goblins/">
+
+        <!-- Logo -->
+        <a class="navbar-brand">
             <img src="https://i0.wp.com/coisinhaverde.com.br/jogos/wp-content/uploads/2019/03/cropped-Coisinha-Verde-Logo2016-1.png?fit=180%2C180&amp;ssl=1" width="30" height="30" alt="">    
             Malditos Goblins
         </a>
+
+        <!-- Icone botão de menu collapsado -->
         <button id="navtoggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         
+        <!-- inicio menu callapse Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+            
+            <!-- Menu Técnicas -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Técnicas
@@ -36,6 +45,8 @@
                 <a class="dropdown-item btn" id="tecnica3" data-toggle="modal" data-target="#modalInformation">Nivel 3</a>
                 </div>
             </li>
+
+            <!-- Menu Ações de Combate -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Ações de Combate
@@ -51,6 +62,8 @@
                 <a id="acoesCombate8" class="dropdown-item btn" data-toggle="modal" data-target="#modalInformation">Morte</a>
                 </div>
             </li>
+
+            <!-- Menu Personagem -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Personagem
@@ -61,8 +74,23 @@
                     <a class="dropdown-item btn" id="gastaMana">Gastar Mana</a>
                     <a class="dropdown-item btn" id="ganhaMana">Recuperar Mana</a>
                     <a class="dropdown-item btn" id="upar">Subir de Nivel</a>
+                    <a class="dropdown-item btn" id="alteraNome" data-toggle="modal" data-target="#modalInformation">Alterar Nome</a>
                 </div>
             </li>
+
+            <!-- Menu Equipamentos -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Equipamentos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item btn" id="equip1" data-toggle="modal" data-target="#modalInformation">Alterar Equipamento 1</a>
+                    <a class="dropdown-item btn" id="equip2" data-toggle="modal" data-target="#modalInformation">Alterar Equipamento 2</a>
+                    <a class="dropdown-item btn" id="equip3" data-toggle="modal" data-target="#modalInformation">Alterar Equipamento 3</a>
+                </div>
+            </li>
+
+            <!-- Menu Rolagens -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Rolagens
@@ -75,12 +103,17 @@
                     <a class="dropdown-item btn" id="rolarD6" data-toggle="modal" data-target="#modalInformation">Rolar D6</a>
                 </div>
             </li>
+
             </ul>
+
+            <!-- Botão Novo Goblin -->
             <div class="my-2 my-lg-0">
-            <button id="newGoblin" class="btn btn-outline-success my-2 my-sm-0">Novo Goblin</button>
+                <button id="newGoblin" class="btn btn-outline-success my-2 my-sm-0">Novo Goblin</button>
             </div>
+
         </div>
     </nav>
+    <!-- Fim NavBar -->
 
     <!-- Modal -->
     <div class="modal fade" id="modalInformation" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -93,14 +126,16 @@
             </button>
             </div>
             <div id="modalBody" class="modal-body">
-            ...
+                ...
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button id="modalSaveBtn" type="button" class="btn btn-success" data-dismiss="modal">Save</button>
             </div>
         </div>
         </div>
     </div>
+    <!--Fim Modal -->
 
     <div class="container">
         <div class="row justify-content-center">
@@ -116,7 +151,7 @@
                         <!-- Início Nome-->
                         <h6 class="card-title p-1 border-bottom border-dark">
                             <strong>Nome:</strong> 
-                            <span id="nome" contenteditable="true" spellcheck="false">
+                            <span id="nome">
                                 Seu Nome
                             </span>
                         </h6>
@@ -202,9 +237,9 @@
                     <!-- Início Equipamentos-->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center"><Strong>Equipamentos</Strong></li>
-                        <li class="list-group-item"><span id="item1" contenteditable="true" spellcheck="false">Vazio</span></li>
-                        <li class="list-group-item"><span id="item2" contenteditable="true" spellcheck="false">Vazio</span></li>
-                        <li class="list-group-item"><span id="item3" contenteditable="true" spellcheck="false">Vazio</span></li>
+                        <li class="list-group-item"><span id="item1" spellcheck="false">Vazio</span></li>
+                        <li class="list-group-item"><span id="item2" spellcheck="false">Vazio</span></li>
+                        <li class="list-group-item"><span id="item3" spellcheck="false">Vazio</span></li>
                     </ul>
                     <!-- Fim Equippamentos-->
 
@@ -216,8 +251,10 @@
         </div>
     </div>
 
+    <!-- inicio da div das mensagens toast-->
     <div aria-live="polite" aria-atomic="true" style="position: fixed; bottom: 0; right: 0; min-height: 100px;">
-        
+      
+        <!-- inicio Mensagem 1 -->
         <div id="toast" class="toast mr-2"  data-delay="5000" style="position: absolute; top: 0; right: 0; min-width: 20rem;">
           <div class="toast-header">
             <img src="https://i0.wp.com/coisinhaverde.com.br/jogos/wp-content/uploads/2019/03/cropped-Coisinha-Verde-Logo2016-1.png?fit=192%2C192&amp;ssl=1" width="20px" class="rounded mr-2" alt="...">
@@ -232,6 +269,9 @@
           </div>
         </div>
       </div>
+      <!-- Fim Mensagem 1 -->
+
+      <!-- Fim da div das mensagens toast-->
 
     <script src="mg.js"></script>
     <script src="script.js"></script>

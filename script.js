@@ -4,6 +4,11 @@ $.get("JSON.txt",function(data,status){
 
         const ficha = JSON.parse(data);
 
+        function clearListening(oldElement){
+            let newElement = oldElement.cloneNode(true);
+            oldElement.parentNode.replaceChild(newElement, oldElement);
+        }
+
         function fechaToggler(){
 
             if ($("#navbarSupportedContent").hasClass('show'))
@@ -11,10 +16,37 @@ $.get("JSON.txt",function(data,status){
         
         }
 
-        function modal(titulo, texto){
+        function modalText(titulo, texto){
 
+            $("#modalSaveBtn").hide();
             $("#modalTitle").text(titulo);
             $("#modalBody").text(texto);
+
+        }
+
+        function modalInput(titulo, texto){
+
+            $("#modalSaveBtn").show();
+            $("#modalTitle").text(titulo);
+            $("#modalBody").html(
+                '<form id="modalForm">'+
+                    '<div id="fomrGroup" class="form-group">'+
+                        '<label for="modalFormInput">'+texto+'</label>'+
+                        '<input type="text" class="form-control" id="modalFormInput" ' +
+                        'placeholder="' + texto + '">'+
+                    '</div>'+
+                '</form>'
+                );
+
+        }
+
+        function addInputModal(idFomr, id, type, titulo,texto){
+
+            $("#"+ idFomr).append(
+                '<label for="'+ id +'">'+titulo+'</label>'+
+                '<input type="text" class="form-control" id="'+ id +'" input type="'+ type +'"'+
+                'placeholder="' + texto + '">'
+            ) 
 
         }
 
@@ -31,7 +63,7 @@ $.get("JSON.txt",function(data,status){
                     texto += "Dado" + (i + 1) + ": " + (dado(6) + 1);
                 }
                 
-                modal("Rolar " + nome,texto);
+                modalText("Rolar " + nome,texto);
 
             })
         };
@@ -72,14 +104,10 @@ $.get("JSON.txt",function(data,status){
             for (let i = 0; i < personagem.tecnica.length; i++){
                 $("#tecnica" + (i + 1)).text(personagem.tecnica[i].nome + " (Nivel:" + (i + 1) + ")");
                 $("#tecnica" + (i + 1)).click(() => {
-                    modal(personagem.tecnica[i].nome, personagem.tecnica[i].descricao);
+                    modalText(personagem.tecnica[i].nome, personagem.tecnica[i].descricao);
                 })
 
             }
-
-            $("#tituloToast").text(personagem.nome);
-            $("#textoToast").text(ficha.falas[dado(6)])
-            $("#toast").toast('show');
 
         }
 
@@ -140,6 +168,51 @@ $.get("JSON.txt",function(data,status){
                 atualizaDadosPersonagem(personagem);
             });
 
+            $("#alteraNome").click(() => {
+                fechaToggler();
+                modalInput("Alterar Nome do Personagem", "Novo Nome");
+                clearListening(document.getElementById("modalSaveBtn"));
+                $("#modalSaveBtn").click(() => {
+
+                    if ($("#modalFormInput").val() != "")
+                    personagem.nome = $("#modalFormInput").val();
+                    
+                    atualizaDadosPersonagem(personagem);
+                });
+            });
+
+            for (let i = 0; i < 3; i++) {
+                let nEquip;
+                $("#equip" + (i + 1)).click(() => {
+                    //controla qual equipamento vai ser alterado
+                    nEquip = i;
+                    fechaToggler();
+                    modalInput("Alterar Equipamento "+ (i + 1), "Nome");
+                    addInputModal("fomrGroup",'danoEquip','number', 'Dano', 'Dano');
+                    addInputModal("fomrGroup",'protecaoEquip','number', 'Proteção', 'Proteção');
+
+                    $("#modalFormInput").val(personagem.equipamentos[i].nome);
+                    $("#danoEquip").val(personagem.equipamentos[i].dano);
+                    $("#protecaoEquip").val(personagem.equipamentos[i].protecao);
+
+                    clearListening(document.getElementById("modalSaveBtn"));
+
+                    $("#modalSaveBtn").click(() => {
+
+                        if ((/[a-z]/i).test($("#modalFormInput").val())){
+                            personagem.equipamentos[nEquip].nome = $("#modalFormInput").val();
+                            personagem.equipamentos[nEquip].dano = parseInt($("#danoEquip").val(),10);
+                            personagem.equipamentos[nEquip].protecao = parseInt($("#protecaoEquip").val(),10);
+                        }
+                        
+                        
+                        atualizaDadosPersonagem(personagem);
+                    });
+
+                });
+            
+            }
+
             addRolarAtributo("combate","rolarCombate",personagem);
             addRolarAtributo("conhecimento","rolarConhecimento",personagem);
             addRolarAtributo("habilidade","rolarHabilidade",personagem);
@@ -148,17 +221,21 @@ $.get("JSON.txt",function(data,status){
             fechaToggler();
             atualizaDadosPersonagem(personagem);
 
+            $("#tituloToast").text(personagem.nome);
+            $("#textoToast").text(ficha.falas[dado(6)]);
+            $("#toast").toast('show');
+
         }
 
         for (let i = 0; i < ficha.acoesDeCombate.length; i++){
             $("#acoesCombate" + (i + 1)).click(() => {
-                modal(ficha.acoesDeCombate[i].nome, ficha.acoesDeCombate[i].descricao);
+                modalText(ficha.acoesDeCombate[i].nome, ficha.acoesDeCombate[i].descricao);
             })
 
         }
 
         $("#rolarD6").click(()=>{
-            modal("Rolar D6",dado(6) + 1);
+            modalText("Rolar D6",dado(6) + 1);
         });
 
         $("#newGoblin").click(newGoblin);
