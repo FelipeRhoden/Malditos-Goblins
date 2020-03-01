@@ -181,7 +181,6 @@ $.get("JSON.txt",function(data,status){
                 });
             });
 
-            //============================================Verificar==========================================
             for (let i = 0; i < 3; i++) {
                 let nEquip;
                 $("#equip" + (i + 1)).click(() => {
@@ -213,7 +212,6 @@ $.get("JSON.txt",function(data,status){
                 });
             
             }
-            //============================================Fim Verificar==========================================
 
             addRolarAtributo("combate","rolarCombate",personagem);
             addRolarAtributo("conhecimento","rolarConhecimento",personagem);
