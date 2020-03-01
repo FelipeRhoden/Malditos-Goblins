@@ -1,3 +1,8 @@
+/**
+ * @author Felipe Rhoden
+ * @version 1.0.0
+ */
+
 
 $.get("JSON.txt",function(data,status){
     if (status == "success"){
