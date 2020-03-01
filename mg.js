@@ -130,19 +130,44 @@ function goblin(){
         return protecaoFinal;
     }
 
+    /**
+     * @author Felipe Rhoden
+     * @method
+     * @name perdeVitalidade
+     * @description metodo para diminuir um ponto de vitalidade
+     */
     this.perdeVitalidade = () => {
         this.vitalidade--;
     }
 
+    /**
+     * @author Felipe Rhoden
+     * @method
+     * @name ganhaVitalidade
+     * @description metodo para aumentar um ponto de vitalidade
+     */
     this.ganhaVitalidade = () => {
         if ((this.vitalidade < 4 && this.nivel <= 3) || this.vitalidade < (this.nivel + 1))
             this.vitalidade++;
     }
 
+    /**
+     * @author Felipe Rhoden
+     * @method
+     * @name perdeMana
+     * @description metodo para diminuir um ponto de mana
+     */
     this.perdeMana = () => {
         this.mana--;
     }
 
+
+    /**
+     * @author Felipe Rhoden
+     * @method
+     * @name ganhaMana
+     * @description metodo para aumentar um ponto de mana
+     */
     this.ganhaMana = () => {
         this.mana++;
     }
