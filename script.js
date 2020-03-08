@@ -1,14 +1,31 @@
 
+
+/**
+ * @author Felipe Rhoden
+ * @function
+ * @description Função get para pegar as informções da ficha
+ */
 $.get("JSON.txt",function(data,status){
     if (status == "success"){
 
         const ficha = JSON.parse(data);
 
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @param {HTMLElement} oldElement
+         * @description Função para limpar a lista de funções adicionadas a um elemento 
+         */
         function clearListening(oldElement){
             let newElement = oldElement.cloneNode(true);
             oldElement.parentNode.replaceChild(newElement, oldElement);
         }
 
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @description Função para fechamento do navBar quando collapsado 
+         */
         function fechaToggler(){
 
             if ($("#navbarSupportedContent").hasClass('show'))
@@ -16,6 +33,13 @@ $.get("JSON.txt",function(data,status){
         
         }
 
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @param {String} titulo - Titulo do Modal
+         * @param {String} texto - Texto do Modal
+         * @description Função para criação de modal só com informações 
+         */
         function modalText(titulo, texto){
 
             $("#modalSaveBtn").hide();
@@ -24,6 +48,13 @@ $.get("JSON.txt",function(data,status){
 
         }
 
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @param {String} titulo - Titulo do Modal
+         * @param {String} texto - Texto e placeholder do input
+         * @description Função para criação de modal com input para inserção de informações ou alteração de conteudo 
+         */
         function modalInput(titulo, texto){
 
             $("#modalSaveBtn").show();
@@ -40,9 +71,19 @@ $.get("JSON.txt",function(data,status){
 
         }
 
-        function addInputModal(idFomr, id, type, titulo,texto){
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @param {String} idForm - Id do Formulario
+         * @param {String} id  - Novo id para o input
+         * @param {String} type - typo do input
+         * @param {String} titulo - Titulo dado ao input
+         * @param {String} texto - placeholder dado ao input
+         * @description Função para adicionar inputs em um formulario  
+         */
+        function addInputForm(idForm, id, type, titulo,texto){
 
-            $("#"+ idFomr).append(
+            $("#"+ idForm).append(
                 '<label for="'+ id +'">'+titulo+'</label>'+
                 '<input type="text" class="form-control" id="'+ id +'" input type="'+ type +'"'+
                 'placeholder="' + texto + '">'
@@ -50,6 +91,14 @@ $.get("JSON.txt",function(data,status){
 
         }
 
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @param {String} nome 
+         * @param {String} id 
+         * @param {Object} personagem
+         * @description Função para adicionar a função de rolar atributos quando clicar em um elemento em especifico   
+         */
         function addRolarAtributo(nome, id, personagem){
             $("#"+id).click(()=>{
 
@@ -68,6 +117,13 @@ $.get("JSON.txt",function(data,status){
             })
         };
 
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @param {integer} rolagem
+         * @description Função para adicionar uma anomalia ao personagem
+         * @returns anomalia 
+         */
         function addAnomalia(rolagem){
 
             if ((rolagem - 1) <= 0) {
@@ -82,6 +138,11 @@ $.get("JSON.txt",function(data,status){
                 return ficha.Anomalia[rolagem - 1];
         }
 
+        /**
+         * @author Felipe Rhoden
+         * @param {Object} personagem
+         * @description Função para atualizar os dados do personagem na pagina 
+         */
         function atualizaDadosPersonagem(personagem){
 
             $("#nome").text(personagem.nome);   
@@ -111,6 +172,11 @@ $.get("JSON.txt",function(data,status){
 
         }
 
+        /**
+         * @author Felipe Rhoden
+         * @function
+         * @description Função para criar um novo goblin
+         */
         function newGoblin(){
             const personagem = new goblin();
             personagem.nome = ficha.nome.silaba1[dado(6)] + ficha.nome.silaba2[dado(6)];
@@ -145,6 +211,7 @@ $.get("JSON.txt",function(data,status){
             $("#cura").click(() => {
                 personagem.ganhaVitalidade();
                 atualizaDadosPersonagem(personagem);
+                alert(personagem.nome);
             });
 
             $("#levarDano").click(() => {
@@ -188,8 +255,8 @@ $.get("JSON.txt",function(data,status){
                     nEquip = i;
                     fechaToggler();
                     modalInput("Alterar Equipamento "+ (i + 1), "Nome");
-                    addInputModal("fomrGroup",'danoEquip','number', 'Dano', 'Dano');
-                    addInputModal("fomrGroup",'protecaoEquip','number', 'Proteção', 'Proteção');
+                    addInputForm("fomrGroup",'danoEquip','number', 'Dano', 'Dano');
+                    addInputForm("fomrGroup",'protecaoEquip','number', 'Proteção', 'Proteção');
 
                     $("#modalFormInput").val(personagem.equipamentos[i].nome);
                     $("#danoEquip").val(personagem.equipamentos[i].dano);
