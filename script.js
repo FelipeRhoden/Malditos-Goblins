@@ -211,7 +211,6 @@ $.get("JSON.txt",function(data,status){
             $("#cura").click(() => {
                 personagem.ganhaVitalidade();
                 atualizaDadosPersonagem(personagem);
-                alert(personagem.nome);
             });
 
             $("#levarDano").click(() => {
