@@ -1,14 +1,17 @@
+import {ficha} from "../model/ficha.js";
+import {dado} from "../model/dado.js";
+
 //Verção 1.0.0
 
 /**
  * @author Felipe Rhoden
  * @function
- * @description Função get para pegar as informções da ficha
+ * @description Função get para pegar as informções da livro
  */
-$.get("JSON.txt",function(data,status){
+$.get("./model/livro.txt",function(data,status){
     if (status == "success"){
 
-        const ficha = JSON.parse(data);
+        const livro = JSON.parse(data);
 
         /**
          * @author Felipe Rhoden
@@ -127,15 +130,15 @@ $.get("JSON.txt",function(data,status){
         function addAnomalia(rolagem){
 
             if ((rolagem - 1) <= 0) {
-                return ficha.Anomalia[0];
+                return livro.Anomalia[0];
 
             } else if ((rolagem - 1) >= 8 ){
                 return addAnomalia(dado(6) + dado(6)) + " e " + addAnomalia(dado(6) + dado(6));
 
-            } else if (ficha.Anomalia[rolagem - 1] == "(1 D6) Olhos"){
+            } else if (livro.Anomalia[rolagem - 1] == "(1 D6) Olhos"){
                 return (dado(6) + 3) + " Olhos";
             } else 
-                return ficha.Anomalia[rolagem - 1];
+                return livro.Anomalia[rolagem - 1];
         }
 
         /**
@@ -155,17 +158,17 @@ $.get("JSON.txt",function(data,status){
             $("#sorte").text(personagem.atributos.sorte);
             $("#vitalidade").text(personagem.vitalidade);
             $("#mana").text(personagem.mana);
-            $("#dano").text(personagem.dano());
-            $("#protecao").text(personagem.protecao());
+            $("#dano").text(personagem.dano);
+            $("#protecao").text(personagem.protecao);
 
             for (let i = 0; i < personagem.equipamentos.length; i++) {
                 $("#item"+(i+1)).text(personagem.equipamentos[i].nome);
             }
 
-            for (let i = 0; i < personagem.tecnica.length; i++){
-                $("#tecnica" + (i + 1)).text(personagem.tecnica[i].nome + " (Nivel:" + (i + 1) + ")");
+            for (let i = 0; i < personagem.tecnicas.length; i++){
+                $("#tecnica" + (i + 1)).text(personagem.tecnicas[i].nome + " (Nivel:" + (i + 1) + ")");
                 $("#tecnica" + (i + 1)).click(() => {
-                    modalText(personagem.tecnica[i].nome, personagem.tecnica[i].descricao);
+                    modalText(personagem.tecnicas[i].nome, personagem.tecnicas[i].descricao);
                 })
 
             }
@@ -178,35 +181,37 @@ $.get("JSON.txt",function(data,status){
          * @description Função para criar um novo goblin
          */
         function newGoblin(){
-            const personagem = new goblin();
-            personagem.nome = ficha.nome.silaba1[dado(6)] + ficha.nome.silaba2[dado(6)];
-            personagem.coloracao = ficha.Coloracao[dado(6)];
-            personagem.caracteristica = ficha.Caracteristica[dado(6)];
+            const personagem = new ficha();
+            personagem.nome = livro.nome.silaba1[dado(6)] + livro.nome.silaba2[dado(6)];
+            personagem.coloracao = livro.Coloracao[dado(6)];
+            personagem.caracteristica = livro.Caracteristica[dado(6)];
             if(personagem.caracteristica == "Anomalia") {
                 personagem.caracteristica = addAnomalia(dado(6) + dado(6));
             }
-            personagem.ocupacao = ficha.Ocupacao[dado(6)];
-            personagem.mana = ficha[personagem.ocupacao].mana;
+            personagem.ocupacao = livro.Ocupacao[dado(6)];
+            personagem.mana = livro[personagem.ocupacao].mana;
             personagem.upNivel();  
-            personagem.atributos.addValor(ficha[personagem.coloracao]); 
-            personagem.atributos.addValor(ficha[personagem.ocupacao]);
-            for (let i = 0; i < personagem.tecnica.length; i++){
-                personagem.tecnica[i].nome = ficha[personagem.ocupacao].tecnica[i].nome;
-                personagem.tecnica[i].descricao = ficha[personagem.ocupacao].tecnica[i].descricao;
+            personagem.atributos.addValor(livro[personagem.coloracao]); 
+            personagem.atributos.addValor(livro[personagem.ocupacao]);
+            for (let i = 0; i < livro[personagem.ocupacao].tecnica.length; i++){
+                personagem.addTecnica(livro[personagem.ocupacao].tecnica[i]);
             }
             if (personagem.ocupacao != "Xamã"){ 
                 let i = 0;
-                ficha[ficha[personagem.ocupacao].equip][dado(6)].forEach(element =>{
-                    personagem.equipamentos[i].addEquip(element);
+                livro[livro[personagem.ocupacao].equip][dado(6)].forEach(element =>{
+                    personagem.addEquip(element);
                     i++;
                 })
             } else {
                 let i = 0;
-                ficha[personagem.ocupacao].equip.forEach(element => {
-                    personagem.equipamentos[i].addEquip(element);
+                livro[personagem.ocupacao].equip.forEach(element => {
+                    personagem.addEquip(element);
                     i++;
                 })
             }
+
+            while (personagem.equipamentos.length < 3)
+                    personagem.addEquip();
 
             $("#cura").click(() => {
                 personagem.ganhaVitalidade();
@@ -288,14 +293,14 @@ $.get("JSON.txt",function(data,status){
             atualizaDadosPersonagem(personagem);
 
             $("#tituloToast").text(personagem.nome);
-            $("#textoToast").text(ficha.falas[dado(6)]);
+            $("#textoToast").text(livro.falas[dado(6)]);
             $("#toast").toast('show');
 
         }
 
-        for (let i = 0; i < ficha.acoesDeCombate.length; i++){
+        for (let i = 0; i < livro.acoesDeCombate.length; i++){
             $("#acoesCombate" + (i + 1)).click(() => {
-                modalText(ficha.acoesDeCombate[i].nome, ficha.acoesDeCombate[i].descricao);
+                modalText(livro.acoesDeCombate[i].nome, livro.acoesDeCombate[i].descricao);
             })
 
         }
