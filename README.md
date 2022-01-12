@@ -7,6 +7,4 @@
 - Jquery
 
 **Se gostou deixei uma estrela** :star:
-teste2
-teste3
-teste
+
